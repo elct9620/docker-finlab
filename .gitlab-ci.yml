@@ -4,7 +4,8 @@ default:
     - docker:24.0.5-dind
   before_script:
     - docker info
-    - docker buildx create --driver=docker-container --name=buildkit-builder --use
+    - docker context create gitlab-ci
+    - docker buildx create --use gitlab-ci
     - echo "$CI_JOB_TOKEN" | docker login $CI_REGISTRY -u $CI_REGISTRY_USER --password-stdin
 
 variables:
