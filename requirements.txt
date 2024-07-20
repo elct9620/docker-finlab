@@ -1,0 +1,11 @@
+# Finlab
+finlab
+# Research
+ta-lib-bin
+# Machine Learning
+git+https://github.com/microsoft/qlib.git@v0.9.5
+xgboost
+lightgbm
+catboost
+# Utils
+ipython
