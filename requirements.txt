@@ -1,5 +1,5 @@
 # Finlab
-finlab==1.2.14
+finlab==1.2.15
 # Research
 ta-lib-bin
 # Machine Learning
