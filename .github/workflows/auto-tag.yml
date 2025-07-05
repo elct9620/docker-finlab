@@ -1,4 +1,4 @@
-name: Auto Tag on Finlab Version Change
+name: Auto Tag
 on:
   push:
     branches:
@@ -15,34 +15,34 @@ jobs:
       - uses: actions/checkout@v3
         with:
           fetch-depth: 2  # Get previous commit
-      
-      - name: Check if Finlab version changed
+
+      - name: Check Finlab version
         id: check
         run: |
           # Get current Finlab version
           CURRENT=$(grep "finlab" requirements.txt | sed 's/.*==\([0-9.]*\).*/\1/')
-          
+
           # Get previous Finlab version
           PREVIOUS=$(git show HEAD~1:requirements.txt | grep "finlab" | sed 's/.*==\([0-9.]*\).*/\1/' 2>/dev/null || echo "")
-          
+
           echo "current_version=$CURRENT" >> $GITHUB_OUTPUT
           echo "previous_version=$PREVIOUS" >> $GITHUB_OUTPUT
-          
+
           if [ "$CURRENT" != "$PREVIOUS" ] && [ -n "$CURRENT" ]; then
             echo "version_changed=true" >> $GITHUB_OUTPUT
             echo "tag_name=v$CURRENT" >> $GITHUB_OUTPUT
           else
             echo "version_changed=false" >> $GITHUB_OUTPUT
           fi
-      
-      - name: Create tag if Finlab version changed
+
+      - name: Create and push tag
         if: steps.check.outputs.version_changed == 'true'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          
+
           TAG_NAME="${{ steps.check.outputs.tag_name }}"
-          
+
           # Check if tag already exists
           if git rev-parse "$TAG_NAME" >/dev/null 2>&1; then
             echo "Tag $TAG_NAME already exists, skipping..."
