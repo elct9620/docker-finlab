@@ -74,4 +74,4 @@ docker build --platform linux/amd64 -t ghcr.io/elct9620/docker-finlab .
 
 ## License
 
-This project is licensed under the same terms as the Finlab library.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
