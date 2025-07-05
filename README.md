@@ -1,6 +1,6 @@
 # Docker Finlab
 
-Automated Docker image build for [Finlab](https://github.com/finlab-python/finlab) financial analysis and quantitative trading library.
+Automated Docker image build for [Finlab](https://www.finlab.tw/) financial analysis and quantitative trading library.
 
 ## Overview
 
