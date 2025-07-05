@@ -1,11 +1,4 @@
 # Finlab
-finlab==1.3.0
-# Research
-ta-lib-bin
-# Machine Learning
-git+https://github.com/microsoft/qlib.git@v0.9.5
-xgboost
-lightgbm
-catboost
+finlab[qlib]==1.3.0
 # Utils
 ipython
