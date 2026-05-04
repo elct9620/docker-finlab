@@ -1,4 +1,4 @@
 # Finlab
-finlab[qlib]==1.5.13
+finlab[qlib]==2.0.5
 # Utils
 ipython
